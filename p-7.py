@@ -3,3 +3,5 @@ d = {'name': 'Saniya', 'age': 22, 'city': 'Rajkot'}
 print("Dictionary:", d)
 d.update({"age": 23})
 d["course"]= "Python"
+for key, value in d.items():
+    print(key, ":", value)
