@@ -1,100 +1,84 @@
-from collections import degue
-#function to generate possible next states
-def get_next_states(state):
-    a,b = state
+from collections import deque
 
-    #capacities of jugs
+# Function to generate possible next states
+def get_next_states(state):
+    a, b = state
+    
+    # Capacities of jugs
     jugA = 4
     jugB = 3
-
+    
     states = []
 
-    #fill jug A completely
-    states.append((jugA,b))
+    # Fill Jug A completely
+    states.append((jugA, b))
 
-    #fill jug B completely
-    states.append((a,jugB))
+    # Fill Jug B completely
+    states.append((a, jugB))
 
-    #Empty Jug A
-    states.append((0,b))
+    # Empty Jug A
+    states.append((0, b))
 
-    #Empty Jug B
-    states.append((a,0))
+    # Empty Jug B
+    states.append((a, 0))
 
-    #pour water from A to B
-    pour = min(a,jugB-b)
-    states.append(a-pour,b+pour)
+    # Pour water from A to B
+    pour = min(a, jugB - b)
+    states.append((a - pour, b + pour))
 
-    
-    #pour water from A to B
-    pour = min(a,jugB-b)
-    states.append(a+pour,b-pour)
+    # Pour water from B to A
+    pour = min(b, jugA - a)
+    states.append((a + pour, b - pour))
 
     return states
 
-#BFS implementation
+
+# BFS implementation
 def bfs():
-    start = (0,0)
+
+    start = (0, 0)
     goal = 2
 
-    #queue for BFS
-    queue = degue()
+    # Queue for BFS
+    queue = deque()
 
-    #store state and path
-    queue.append((start,[]))
+    # Store state and path
+    queue.append((start, []))
 
-    #to avoid visiting same states
+    # To avoid visiting same states
     visited = set()
 
-    while queue():
-        current, path = queue.popft()
-        a,b = current
+    while queue:
 
-        #if goal found
+        current, path = queue.popleft()
+
+        a, b = current
+
+        # If goal found
         if a == goal:
-            return path +[current]
+            return path + [current]
 
-        #Mark state visited
+        # Mark state visited
         if current in visited:
             continue
+
         visited.add(current)
-        
-        #generate child states 
+
+        # Generate child states
         for next_state in get_next_states(current):
-            if next_state not in visited
-                queue.append((next_state,path +[current]))
-            return none
 
-        #run BFS
-        solution = bfs()
-        print('steps to reach goal :')
+            if next_state not in visited:
+                queue.append(
+                    (next_state, path + [current])
+                )
 
-        for step in solution:
-            print(step)
-        
+    return None
 
 
+# Run BFS
+solution = bfs()
 
+print("Steps to reach goal:")
 
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
+for step in solution:
+    print(step)
