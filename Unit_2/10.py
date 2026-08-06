@@ -4,12 +4,6 @@
 # Write a program to generate a sequence of numbers
 # using generator functions and the yield keyword.
 
-# Definition:
-# A generator is a special function that returns
-# one value at a time using the yield keyword.
-# It saves memory because it does not store
-# all values at once.
-
 # Generator Function
 def numbers():
 
