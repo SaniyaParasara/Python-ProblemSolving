@@ -1,13 +1,6 @@
-# Practical No. 7
+'''7. Write a program to demonstrate list,
+dictionary and set comprehensions.
 
-# Question:
-# Write a program to demonstrate list,
-# dictionary and set comprehensions.
-
-# Definition:
-# Comprehension is a short and easy way
-# to create lists, dictionaries and sets.
-# It reduces the number of lines of code.
 
 # ---------------- LIST COMPREHENSION ----------------
 
