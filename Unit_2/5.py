@@ -1,15 +1,5 @@
-# Practical No. 5
-
-# Question:
-# Write a program to demonstrate the use of
-# break, continue and pass statements.
-
-# Definition:
-# break    -> Terminates the loop immediately.
-# continue -> Skips the current iteration and
-#             continues with the next iteration.
-# pass     -> Does nothing. It is used as a
-#             placeholder statement.
+'''5.  Write a program to demonstrate the use of
+break, continue and pass statements.'''
 
 # ------------------ BREAK ------------------
 
