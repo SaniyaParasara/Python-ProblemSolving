@@ -1,5 +1,5 @@
 '''7. Write a program to demonstrate list,
-dictionary and set comprehensions.
+dictionary and set comprehensions.'''
 
 
 # ---------------- LIST COMPREHENSION ----------------
