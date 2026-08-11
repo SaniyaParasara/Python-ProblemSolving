@@ -1,16 +1,6 @@
-# Practical No. 8
+'''8. # Write a program to illustrate variable scope
+# using local, global and nonlocal variables.'''
 
-# Question:
-# Write a program to illustrate variable scope
-# using local, global and nonlocal variables.
-
-# Definition:
-# Variable scope is the region where a variable
-# can be accessed.
-# Local variable    -> Declared inside a function.
-# Global variable   -> Declared outside a function.
-# Nonlocal variable -> Declared in an outer function
-#                      and modified inside an inner function.
 
 # Global Variable
 x = 100
