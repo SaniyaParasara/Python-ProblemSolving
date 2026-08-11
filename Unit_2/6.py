@@ -1,13 +1,5 @@
-# Practical No. 6
-
-# Question:
-# Write a program to iterate over lists,
-# strings and dictionaries using loops.
-
-# Definition:
-# Iteration means accessing each element one by one.
-# A for loop is used to iterate through lists,
-# strings and dictionaries.
+'''6. Write a program to iterate over lists,
+strings and dictionaries using loops.'''
 
 # ---------------- LIST ----------------
 
