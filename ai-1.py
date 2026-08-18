@@ -1,4 +1,4 @@
-from collections import degue
+from collections import deque
 #function to generate possible next states
 def get_next_states(state):
     a,b = state
@@ -61,7 +61,7 @@ def bfs():
         
         #generate child states 
         for next_state in get_next_states(current):
-            if next_state not in visited
+            if next_state not in visited:
                 queue.append((next_state,path +[current]))
             return none
 
