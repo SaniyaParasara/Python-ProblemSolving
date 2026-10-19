@@ -1,45 +1,31 @@
-# UNIT 4 - Q5: Write a program to implement single, multilevel and multiple
-#               inheritance.
-# SCENARIO: Vehicle hierarchy in a transport app: Vehicle -> Car (single),
-#           Vehicle -> Car -> ElectricCar (multilevel), and a HybridCar that
-#           inherits from both Petrol and Electric engines (multiple).
+# 35. Write a Python program to implement single, multilevel and multiple inheritance.
 
-# ---- Single ----
-class Vehicle:
-    def __init__(self, brand):
-        self.brand = brand
-    def start(self):
-        print(self.brand, "starts")
+# Single inheritance
+class Animal:
+    def eat(self):
+        print("Eating...")
 
-class Car(Vehicle):
-    def wheels(self):
-        print("Car has 4 wheels")
+class Dog(Animal):
+    def bark(self):
+        print("Barking...")
 
-print("-- Single --")
-c = Car("Honda"); c.start(); c.wheels()
+# Multilevel inheritance
+class Puppy(Dog):
+    def weep(self):
+        print("Weeping...")
 
-# ---- Multilevel ----
-class ElectricCar(Car):
-    def battery(self):
-        print("Battery: 75 kWh")
+# Multiple inheritance
+class Father:
+    def skills(self):
+        print("Gardening")
 
-print("-- Multilevel --")
-e = ElectricCar("Tesla"); e.start(); e.wheels(); e.battery()
+class Mother:
+    def hobbies(self):
+        print("Cooking")
 
-# ---- Multiple ----
-class PetrolEngine:
-    def fuel(self): print("Runs on petrol")
-class ElectricEngine:
-    def charge(self): print("Runs on battery")
-class HybridCar(PetrolEngine, ElectricEngine):
+class Child(Father, Mother):
     pass
 
-print("-- Multiple --")
-h = HybridCar(); h.fuel(); h.charge()
-
-# ---- Hierarchical (bonus) ----
-class Bike(Vehicle): pass
-class Truck(Vehicle): pass
-print("-- Hierarchical --")
-Bike("Yamaha").start(); Truck("Tata").start()
-print(issubclass(ElectricCar, Vehicle), isinstance(e, Car))
+d = Dog(); d.eat(); d.bark()
+p = Puppy(); p.eat(); p.bark(); p.weep()
+c = Child(); c.skills(); c.hobbies()

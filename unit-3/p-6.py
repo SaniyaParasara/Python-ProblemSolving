@@ -1,35 +1,21 @@
-# UNIT 3 - Q6: Write a program to perform file and directory operations
-#               using os and sys modules.
-# SCENARIO: A file-manager / project-setup script that creates folders and
-#           files, lists and renames them, and reads command-line arguments.
+# 26. Write a Python program to perform file and directory operations using os and sys modules.
 
-import os, sys
+import os
+import sys
 
-print("Python version :", sys.version.split()[0])
-print("OS name        :", os.name, "| Platform:", sys.platform)
-print("Script args    :", sys.argv)
-print("Current dir    :", os.getcwd())
+print("Current directory:", os.getcwd())
+os.mkdir("test_folder")                       # Create directory
+print("Created:", os.path.exists("test_folder"))
+with open("test_folder/sample.txt", "w") as f:
+    f.write("Hello")
+print("Files:", os.listdir("test_folder"))
+print("Is file:", os.path.isfile("test_folder/sample.txt"))
+print("File size:", os.path.getsize("test_folder/sample.txt"), "bytes")
+os.rename("test_folder/sample.txt", "test_folder/renamed.txt")
+os.remove("test_folder/renamed.txt")          # Delete file
+os.rmdir("test_folder")                       # Delete directory
 
-os.makedirs("project/docs", exist_ok=True)            # create directories
-with open("project/docs/readme.txt", "w") as f:       # create a file
-    f.write("Hello from os module")
-
-print("Files in project/docs :", os.listdir("project/docs"))
-print("Is file?  :", os.path.isfile("project/docs/readme.txt"))
-print("Is dir?   :", os.path.isdir("project/docs"))
-print("Size      :", os.path.getsize("project/docs/readme.txt"), "bytes")
-print("Abs path  :", os.path.abspath("project/docs/readme.txt"))
-print("Split     :", os.path.split("project/docs/readme.txt"))
-print("Extension :", os.path.splitext("readme.txt"))
-
-os.rename("project/docs/readme.txt", "project/docs/info.txt")   # rename
-print("After rename :", os.listdir("project/docs"))
-
-for root, dirs, files in os.walk("project"):                    # walk tree
-    print("Walk ->", root, dirs, files)
-
-os.remove("project/docs/info.txt")                    # delete file
-os.rmdir("project/docs"); os.rmdir("project")         # delete empty dirs
-print("Cleaned up. Exists?", os.path.exists("project"))
-print("Environment USER/HOME:", os.environ.get("HOME", "n/a"))
-# sys.exit("message") would stop the program here
+# sys module
+print("Python version:", sys.version)
+print("Platform:", sys.platform)
+print("Arguments:", sys.argv)

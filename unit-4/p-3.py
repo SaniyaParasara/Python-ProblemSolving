@@ -1,25 +1,16 @@
-# UNIT 4 - Q3: Write a program to illustrate instance variables and class variables.
-# SCENARIO: In a school, every student has own name/marks (instance variables)
-#           but all share the same school name and student count (class variables).
+# 33. Write a Python program to illustrate instance variables and class variables.
 
-class Student:
-    school = "ABC University"        # class variable (shared)
-    count = 0
+class Employee:
+    company = "TechSoft"                        # Class variable (shared)
 
-    def __init__(self, name, marks):
-        self.name = name             # instance variables (separate per object)
-        self.marks = marks
-        Student.count += 1
+    def __init__(self, name, salary):
+        self.name = name                        # Instance variable
+        self.salary = salary
 
-s1 = Student("Amit", 80)
-s2 = Student("Riya", 90)
-print(s1.name, s1.marks, s1.school)
-print(s2.name, s2.marks, s2.school)
-print("Total students:", Student.count)
+e1 = Employee("Saniya", 50000)
+e2 = Employee("Rahul", 45000)
+print(e1.name, e1.salary, e1.company)
+print(e2.name, e2.salary, e2.company)
 
-Student.school = "XYZ University"    # change via class -> affects all
-print("After class change:", s1.school, s2.school)
-
-s1.school = "Private School"         # creates instance variable for s1 only
-print("s1:", s1.school, "| s2:", s2.school, "| class:", Student.school)
-print("s1.__dict__:", s1.__dict__)
+Employee.company = "NewTech"                    # Changing the class variable
+print("After change:", e1.company, e2.company)

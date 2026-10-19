@@ -1,24 +1,14 @@
-# UNIT 4 - Q1: Write a program to create a class and object in Python.
-# SCENARIO: A library system represents each book as an object with title,
-#           author and price, and behaviour such as discount calculation.
+# 31. Write a Python program to create a class and object in Python.
 
-class Book:
-    def __init__(self, title, author, price):
-        self.title = title
-        self.author = author
-        self.price = price
-
-    def discount_price(self, percent):
-        return self.price - self.price * percent / 100
+class Student:
+    def __init__(self, name, roll_no):
+        self.name = name
+        self.roll_no = roll_no
 
     def display(self):
-        print(f"{self.title} by {self.author} - Rs.{self.price}")
+        print("Name:", self.name, "| Roll No:", self.roll_no)
 
-b1 = Book("Python Basics", "Guido", 500)       # objects
-b2 = Book("Data Science", "Wes", 800)
-b1.display()
-b2.display()
-print("Discounted price of b1:", b1.discount_price(10))
-print("Type:", type(b1), "| Attribute:", b2.title)
-b1.price = 550                                  # modify attribute
-print("Updated:", b1.price, "| Has author?", hasattr(b1, "author"))
+s1 = Student("Saniya", 101)
+s2 = Student("Rahul", 102)
+s1.display()
+s2.display()

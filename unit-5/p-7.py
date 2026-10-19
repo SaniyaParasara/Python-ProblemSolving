@@ -1,28 +1,17 @@
-# UNIT 5 - Q7: Write a program to handle missing data using dropna() and
-#               fillna() methods.
-# SCENARIO: A survey / sales sheet has blank cells. Before analysis, rows with
-#           too many blanks are removed and others are filled with mean/zero.
+# 47. Write a Python program to handle missing data using dropna and fillna methods.
 
-import pandas as pd, numpy as np
+import pandas as pd
+import numpy as np
 
 df = pd.DataFrame({
-    "Name":   ["Amit", "Riya", "Karan", "Neha", "Dev"],
-    "Marks":  [82, np.nan, 67, np.nan, 55],
-    "City":   ["Rajkot", "Surat", None, "Vadodara", "Rajkot"],
-    "Attend": [90, 85, np.nan, 70, np.nan],
+    "Name": ["Saniya", "Rahul", "Priya", "Amit"],
+    "Age": [22, np.nan, 23, 25],
+    "Marks": [85, 78, np.nan, np.nan],
 })
-print("Original:\n", df, "\n")
-print("isnull().sum():\n", df.isnull().sum(), "\n")
+print("Original:\n", df)
+print("\nMissing values:\n", df.isnull().sum())
 
-print("dropna()  (any NaN row):\n", df.dropna(), "\n")
-print("dropna(subset=[Marks]):\n", df.dropna(subset=["Marks"]), "\n")
-print("dropna(thresh=3):\n", df.dropna(thresh=3), "\n")
-
-f = df.copy()
-f["Marks"]  = f["Marks"].fillna(f["Marks"].mean())       # mean
-f["City"]   = f["City"].fillna("Unknown")                # text
-f["Attend"] = f["Attend"].fillna(0)                      # constant
-print("fillna() cleaned:\n", f, "\n")
-
-print("Forward fill:\n", df[["Marks", "Attend"]].ffill(), "\n")
-print("fillna with dict:\n", df.fillna({"Marks": 0, "City": "NA", "Attend": 50}))
+print("\nAfter dropna():\n", df.dropna())
+print("\nfillna(0):\n", df.fillna(0))
+print("\nFill with column mean:\n", df.fillna(df.mean(numeric_only=True)))
+print("\nForward fill:\n", df.ffill())

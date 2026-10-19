@@ -1,40 +1,29 @@
-# UNIT 5 - Q8: Write a program to plot line, bar, histogram and pie charts
-#               using Python.
-# SCENARIO: A shop owner prepares a monthly review: sales trend (line),
-#           product comparison (bar), marks / age spread (histogram) and
-#           category share (pie).
-# (pip install matplotlib)
+# 48. Write a Python program to plot line, bar, histogram and pie charts using Python.
 
-import matplotlib
-matplotlib.use("Agg")           # remove this line to open windows on your PC
 import matplotlib.pyplot as plt
-import numpy as np
 
-months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-sales  = [12, 15, 14, 18, 22, 25]
+fig, axs = plt.subplots(2, 2, figsize=(10, 8))
 
-plt.figure(figsize=(6, 4))
-plt.plot(months, sales, marker="o", color="green", linestyle="--")
-plt.title("Line Chart - Monthly Sales"); plt.xlabel("Month"); plt.ylabel("Sales (thousands)")
-plt.grid(True); plt.savefig("line.png"); plt.close()
+# Line chart
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 6, 8, 10]
+axs[0, 0].plot(x, y, marker="o", color="blue")
+axs[0, 0].set_title("Line Chart")
 
-products, qty = ["Pen", "Book", "Bag", "Bottle"], [100, 60, 25, 45]
-plt.figure(figsize=(6, 4))
-plt.bar(products, qty, color=["red", "blue", "green", "orange"])
-plt.title("Bar Chart - Product Quantity"); plt.ylabel("Units")
-plt.savefig("bar.png"); plt.close()
+# Bar chart
+subjects = ["Maths", "Science", "English", "Hindi"]
+scores = [85, 90, 78, 88]
+axs[0, 1].bar(subjects, scores, color="green")
+axs[0, 1].set_title("Bar Chart")
 
-marks = np.random.default_rng(0).normal(60, 15, 150)
-plt.figure(figsize=(6, 4))
-plt.hist(marks, bins=10, color="skyblue", edgecolor="black")
-plt.title("Histogram - Marks Distribution"); plt.xlabel("Marks"); plt.ylabel("Students")
-plt.savefig("hist.png"); plt.close()
+# Histogram
+data = [22, 25, 25, 27, 30, 30, 30, 32, 35, 35, 38, 40, 41, 45]
+axs[1, 0].hist(data, bins=5, color="orange", edgecolor="black")
+axs[1, 0].set_title("Histogram")
 
-plt.figure(figsize=(5, 5))
-plt.pie([40, 25, 20, 15], labels=["IT", "HR", "Finance", "Sales"],
-        autopct="%1.1f%%", explode=(0.1, 0, 0, 0), startangle=90)
-plt.title("Pie Chart - Department Share")
-plt.savefig("pie.png"); plt.close()
+# Pie chart
+axs[1, 1].pie([40, 30, 20, 10], labels=["A", "B", "C", "D"], autopct="%1.1f%%")
+axs[1, 1].set_title("Pie Chart")
 
-print("Saved: line.png, bar.png, hist.png, pie.png")
-print("On your PC replace plt.savefig(...) with plt.show() to view the graph.")
+plt.tight_layout()
+plt.show()

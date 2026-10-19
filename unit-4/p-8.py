@@ -1,44 +1,38 @@
-# UNIT 4 - Q8: Write a program to demonstrate encapsulation and abstraction
-#               using classes.
-# SCENARIO: ATM / bank: the balance is private (encapsulation) and changed only
-#           through deposit/withdraw. Different account types implement an
-#           abstract interest() method (abstraction).
+# 38. Write a Python program to demonstrate encapsulation and abstraction using classes.
 
 from abc import ABC, abstractmethod
 
-class BankAccount(ABC):
-    def __init__(self, holder, balance):
-        self.holder = holder              # public
-        self._branch = "Rajkot"           # protected (convention)
-        self.__balance = balance          # private (name-mangled)
+# Encapsulation
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance                # Private variable
 
-    def deposit(self, amt):
-        if amt > 0:
-            self.__balance += amt
-    def withdraw(self, amt):
-        if 0 < amt <= self.__balance:
-            self.__balance -= amt
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
         else:
-            print("Invalid / insufficient funds")
+            print("Insufficient balance")
+
     def get_balance(self):
         return self.__balance
 
+acc = BankAccount(1000)
+acc.deposit(500)
+acc.withdraw(300)
+print("Balance:", acc.get_balance())
+
+# Abstraction
+class Vehicle(ABC):
     @abstractmethod
-    def interest(self):                   # abstract method
+    def start(self):
         pass
 
-class Savings(BankAccount):
-    def interest(self): return self.get_balance() * 4 / 100
-class Current(BankAccount):
-    def interest(self): return 0
+class Car(Vehicle):
+    def start(self):
+        print("Car starts with a key")
 
-acc = Savings("Amit", 10000)
-acc.deposit(2000); acc.withdraw(500); acc.withdraw(99999)
-print("Balance :", acc.get_balance(), "| Interest:", acc.interest())
-print("Direct private access ->", hasattr(acc, "__balance"))
-print("Name-mangled          ->", acc._BankAccount__balance)
-try:
-    BankAccount("X", 1)
-except TypeError as e:
-    print("Abstract class error:", e)
-print("Current interest:", Current("Riya", 5000).interest())
+Car().start()
